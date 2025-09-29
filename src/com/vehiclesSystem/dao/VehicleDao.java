@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public interface VehicleDao {
     void saveVehicle(Vehicle vehicle) throws SQLException;
-    void deleteVehicle(int id) throws SQLException;
-    void updateVehicle(Vehicle vehicle);
-    Vehicle searchById(int id) throws SQLException;
+    void deleteVehicle(String id) throws SQLException;
+    Vehicle updateVehicle(String id) throws SQLException;
+    Vehicle searchById(String id) throws SQLException;
     Vehicle [] getAllVehicles();
 
 }

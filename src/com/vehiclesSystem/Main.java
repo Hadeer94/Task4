@@ -14,9 +14,13 @@ public class Main {
     public static void main(String[] args) throws SQLException {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         CarService carService = (CarService) context.getBean("carService");
-        //carService.saveCar(new Car(3,"z",Type.Car));
-        //carService.deleteCar(3);
-        Car car = (Car)carService.searchByID(1);
-        System.out.println("id "+car.getId()+" brand "+car.getBrand());
+        //carService.saveCar(new Car("1","z",Type.Car));
+        //carService.deleteCar(1);
+        //Car car = (Car)carService.searchByID(1);
+        //System.out.println("Id "+car.getId()+" Brand "+car.getBrand()+" Type "+car.getType());
+        //Car car= (Car)carService.updateVehicle("1");
+
+
     }
+
 }

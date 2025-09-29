@@ -14,10 +14,16 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @ToString
 public class Plane implements Vehicle{
-    private int id;
+    private String id;
     private String brand;
     private Type type;
     public DatabaseOperations databaseOperations;
+
+    public Plane(String id, String brand, Type type) {
+        this.id = id;
+        this.brand = brand;
+        this.type = type;
+    }
 
     @Override
     public Type getType(){
@@ -28,12 +34,11 @@ public class Plane implements Vehicle{
         return brand;
     }
     @Override
-    public int getId(){
+    public String getId(){
         return id;
     }
-
     @Override
-    public void setId(int id){
+    public void setId(String id){
         this.id = id;
     }
     @Override

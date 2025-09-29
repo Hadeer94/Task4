@@ -4,9 +4,9 @@ import lombok.Setter;
 
 public interface Vehicle {
 
-     int  getId();
+     String  getId();
      String getBrand();
      Type getType();
-     void setId(int id);
+     void setId(String id);
      void setBrand(String brand);
 }

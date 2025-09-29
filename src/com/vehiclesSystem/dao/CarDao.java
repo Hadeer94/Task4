@@ -21,18 +21,20 @@ public class CarDao implements VehicleDao {
     }
 
     @Override
-    public void deleteVehicle(int id) throws SQLException {
-        databaseOperations.delete(id, Type.Car.toString());
+    public void deleteVehicle(String id) throws SQLException {
+        databaseOperations.delete(id);
     }
 
     @Override
-    public void updateVehicle(Vehicle vehicle) {
+    public Vehicle updateVehicle(String id) throws SQLException {
 
+        Car car = (Car) databaseOperations.update(id);
+        return car;
     }
 
     @Override
-    public Vehicle searchById(int id) throws SQLException {
-        Car car = (Car)databaseOperations.searchById(id,Type.Car.toString());
+    public Vehicle searchById(String id) throws SQLException {
+        Car car = (Car)databaseOperations.searchById(id);
         return car;
     }
 

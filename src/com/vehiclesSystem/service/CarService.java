@@ -16,11 +16,15 @@ public class CarService {
     public void saveCar(Car car) throws SQLException {
         carDao.saveVehicle(car);
     }
-    public void deleteCar(int id ) throws SQLException {
+    public void deleteCar(String id ) throws SQLException {
         carDao.deleteVehicle(id);
     }
-    public Vehicle searchByID(int id) throws SQLException {
+    public Vehicle searchByID(String id) throws SQLException {
         Car car = (Car)carDao.searchById(id);
+        return car;
+    }
+    public Vehicle updateVehicle(String id) throws SQLException {
+        Car car = (Car)carDao.updateVehicle(id);
         return car;
     }
 }
