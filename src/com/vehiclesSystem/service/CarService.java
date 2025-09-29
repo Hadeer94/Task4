@@ -23,8 +23,8 @@ public class CarService {
         Car car = (Car)carDao.searchById(id);
         return car;
     }
-    public Vehicle updateVehicle(String id) throws SQLException {
-        Car car = (Car)carDao.updateVehicle(id);
+    public Vehicle updateVehicle(String id,String newBrand) throws SQLException {
+        Car car = (Car)carDao.updateVehicle(id,newBrand);
         return car;
     }
 }

@@ -29,7 +29,8 @@ public class DatabaseOperations {
 
     }
     @PreDestroy
-    public void disconnectFromDatabase(){
+    public void disconnectFromDatabase() throws SQLException {
+        connection.close();
         System.out.println("connect to database closed");
     }
     public void save(Vehicle vehicle) throws SQLException {
@@ -63,15 +64,20 @@ public class DatabaseOperations {
         }
 
     }
-    public Vehicle update(String id) throws SQLException {
-        sql = "update vehicle set brand= ?,type= ? where id =?";
-//        Vehicle vehicle = searchById(id);
-//        if(vehicle!=null){
-//            preparedStatement = connection.prepareStatement(sql);
-//            preparedStatement.setString(1, vehicle.getBrand());
-//            preparedStatement.setString(2, vehicle.getType().toString());
-//            preparedStatement.setString(3, vehicle.getId());
-//        }
+    public Vehicle update(String id,String newBrand) throws SQLException {
+        Vehicle vehicle = searchById(id);
+        if(vehicle!=null){
+            sql = "update vehicle set brand=? where id=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, newBrand);
+            preparedStatement.setString(2, id);
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            if (rowsAffected > 0) {
+                vehicle.setBrand(newBrand);
+                return vehicle;
+            }
+        }
         return null;
     }
     public Vehicle searchById(String id) throws SQLException {
@@ -85,11 +91,11 @@ public class DatabaseOperations {
             String brand = rs.getString("brand");
             switch (type) {
                 case "Car":
-                    return new Car(vehicleId, brand, Type.Car);
+                    return new Car(vehicleId, brand, Type.CAR);
                 case "Bike":
-                    return new Bike(vehicleId, brand, Type.Bike);
+                    return new Bike(vehicleId, brand, Type.BIKE);
                 case "Plane":
-                    return new Plane(vehicleId, brand, Type.Plane);
+                    return new Plane(vehicleId, brand, Type.PLANE);
                 default:
                     throw new IllegalArgumentException("Unknown vehicle type: " + type);
             }
@@ -98,7 +104,13 @@ public class DatabaseOperations {
         System.out.println("not found");
         return null;
     }
-    public void getAllVehicles(){
+    public void getAllVehicles(String type) throws SQLException {
+        sql = "select * from vehicle where type=?";
+        preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1,type);
+        ResultSet rs = preparedStatement.executeQuery();
+        while(rs.next()){
 
+        }
     }
 }

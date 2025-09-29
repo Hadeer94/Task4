@@ -1,7 +1,7 @@
 package com.vehiclesSystem.models;
 
 public enum Type {
-    Car,
-    Plane,
-    Bike
+    CAR,
+    PLANE,
+    BIKE
 }
