@@ -11,8 +11,12 @@ import java.sql.SQLException;
 @Component
 public class CarDao implements VehicleDao {
 
-    @Autowired
     public DatabaseOperations databaseOperations;
+
+    @Autowired
+    public CarDao(DatabaseOperations databaseOperations) {
+        this.databaseOperations = databaseOperations;
+    }
 
     @Override
     public void saveVehicle(Vehicle vehicle) throws SQLException {
@@ -26,9 +30,9 @@ public class CarDao implements VehicleDao {
     }
 
     @Override
-    public Vehicle updateVehicle(String id) throws SQLException {
+    public Vehicle updateVehicle(String id,String newBrand) throws SQLException {
 
-        Car car = (Car) databaseOperations.update(id);
+        Car car = (Car) databaseOperations.update(id,newBrand);
         return car;
     }
 

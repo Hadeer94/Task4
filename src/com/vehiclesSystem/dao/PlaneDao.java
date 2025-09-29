@@ -1,15 +1,21 @@
 package com.vehiclesSystem.dao;
 
-import com.vehiclesSystem.models.Bike;
+import com.vehiclesSystem.models.Plane;
 import com.vehiclesSystem.models.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
+
 @Component
-public class BikeDao implements VehicleDao {
-    @Autowired
+public class PlaneDao implements VehicleDao{
     public DatabaseOperations databaseOperations;
+
+    @Autowired
+    public void setDatabaseOperations(DatabaseOperations databaseOperations){
+        this.databaseOperations = databaseOperations;
+    }
+
     @Override
     public void saveVehicle(Vehicle vehicle) throws SQLException {
         databaseOperations.save(vehicle);
@@ -22,14 +28,14 @@ public class BikeDao implements VehicleDao {
 
     @Override
     public Vehicle updateVehicle(String id,String newBrand) throws SQLException {
-        Bike bike = (Bike)databaseOperations.update(id,newBrand);
-        return bike;
+        Plane plane =(Plane)databaseOperations.update(id,newBrand);
+        return plane;
     }
 
     @Override
     public Vehicle searchById(String id) throws SQLException {
-        Bike bike = (Bike) databaseOperations.searchById(id);
-        return bike;
+        Plane plane =(Plane)databaseOperations.searchById(id);
+        return plane;
     }
 
     @Override
