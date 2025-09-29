@@ -32,4 +32,12 @@ public class Plane implements Vehicle{
         return id;
     }
 
+    @Override
+    public void setId(int id){
+        this.id = id;
+    }
+    @Override
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
 }

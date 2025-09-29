@@ -20,6 +20,9 @@ public class Car implements Vehicle{
     private Type type;
     public DatabaseOperations databaseOperations;
 
+    public Car() {
+    }
+
     public Car(int id, String brand, Type type) {
         this.id = id;
         this.brand = brand;
@@ -36,5 +39,13 @@ public class Car implements Vehicle{
     @Override
     public int getId(){
         return id;
+    }
+    @Override
+    public void setId(int id){
+        this.id = id;
+    }
+    @Override
+    public void setBrand(String brand){
+        this.brand = brand;
     }
 }

@@ -29,4 +29,12 @@ public class Bike implements Vehicle{
     public int getId(){
         return id;
     }
+    @Override
+    public void setId(int id){
+        this.id = id;
+    }
+    @Override
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
 }
